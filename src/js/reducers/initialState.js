@@ -16,6 +16,6 @@ export default {
     doctors:[],
     appointments:[appnt],
     ajaxCallInProgress: 0,
-    isDoctor:1
+    isDoctor:0
   
 };

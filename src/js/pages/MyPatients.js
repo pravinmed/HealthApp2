@@ -2,7 +2,6 @@ import React from "react";
 import HospLayout from "../components/Layout/HospLayout"
 import Nav from "../components/layout/Nav";
 import DoctorsList from "../components/DoctorsList";
-import DBAccess from "../actions/DBAccess";
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as drLoadAction from '../actions/drLoadAction';

@@ -2,7 +2,6 @@ import React from "react";
 import HospLayout from "../components/Layout/HospLayout"
 import Nav from "../components/layout/Nav";
 import DoctorsList from "../components/DoctorsList";
-import DBAccess from "../actions/DBAccess";
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as drLoadAction from '../actions/drLoadAction';
@@ -19,16 +18,17 @@ export default class Settings extends React.Component {
     var AWS = require("aws-sdk/dist/aws-sdk");
 	var AWS = window.AWS;
 	AWS.config.update({
-	  region: "us-west-2",
-	  endpoint: "http://localhost:8000"
+	  region: "us-west-2"
 	});
 
 	this.callBackFunction= this.callBackFunction.bind(this);
-
+  //var roleArn = 'arn:aws:iam::974961485142:role/service-role/myRole';
 	AWS.config.update({accessKeyId: 'AKIAJJLORRTL6KM4BYXA', secretAccessKey: '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'});
+  /*var adminCredentials = new AWS.WebIdentityCredentials({
+    RoleArn: roleArn});*/
 	var docClient = new AWS.DynamoDB.DocumentClient();
 
-	var table = "patient";
+	var table = "patienttable";
 
 	// Query 
 	var params = {
@@ -37,12 +37,16 @@ export default class Settings extends React.Component {
 	  
 	};
 
+  docClient.scan(params, this.callBackFunction);
+      
+    
+
 }
 
 componentDidMount() {
 	var URL = "https://i126g0qaqb.execute-api.us-west-2.amazonaws.com/prod/";
 	var drList =[];
-    $.ajax({
+   /* $.ajax({
       url: URL,
       dataType: 'json',
       cache: false,
@@ -59,7 +63,7 @@ componentDidMount() {
 
         console.error("URL :", status, err.toString());
       }.bind(this)
-    });
+    });*/
   }
 
   callBackFunction(err,data)
