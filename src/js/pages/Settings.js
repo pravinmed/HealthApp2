@@ -23,8 +23,7 @@ export default class Settings extends React.Component {
 
 	this.callBackFunction= this.callBackFunction.bind(this);
   //var roleArn = 'arn:aws:iam::974961485142:role/service-role/myRole';
-	AWS.config.update({accessKeyId: 'AKIAJJLORRTL6KM4BYXA', secretAccessKey: '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'});
-  /*var adminCredentials = new AWS.WebIdentityCredentials({
+	/*var adminCredentials = new AWS.WebIdentityCredentials({
     RoleArn: roleArn});*/
 	var docClient = new AWS.DynamoDB.DocumentClient();
 
