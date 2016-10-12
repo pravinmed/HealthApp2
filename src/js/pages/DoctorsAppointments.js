@@ -6,7 +6,7 @@ export default class DoctorsAppointments extends React.Component {
   constructor(props)
   {
     super(props);
-  
+     console.log(" In the DoctorsAppointments ");
      var appointment =
     {
        id:" Dr@doctor.com",
@@ -33,7 +33,7 @@ export default class DoctorsAppointments extends React.Component {
         daysOfWeek :["Time","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
         apptSchedule:patientsApptList
       };
-      console.log(" Mapping time of day");
+   
       console.log(this.state.apptSchedule.map(function(item,idx){
          console.log(item);
       }));

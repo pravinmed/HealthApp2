@@ -2,6 +2,8 @@ import React from "react";
 import { IndexLink, Link } from "react-router";
 import LocationList from "../LocationList";
 import { connect } from 'react-redux';
+import * as identityAction from '../../actions/identityAction';
+import {bindActionCreators} from 'redux';
 
 export default class Nav extends React.Component {
   constructor(props) {
@@ -11,12 +13,19 @@ export default class Nav extends React.Component {
       collapsed: true,
       cities:["Bangalore","Chennai","Pune"],
     };
+    this.onUserSignOff = this.onUserSignOff.bind(this);
   }
 
   toggleCollapse() {
     const collapsed = !this.state.collapsed;
     this.setState({collapsed});
-    console.log(" In the toggle collapse ");
+   
+  }
+
+  onUserSignOff()
+  {
+    this.props.actions.userLoggedOut();
+    console.log(" In the User sign Off ");
   }
 
   render() {
@@ -36,6 +45,7 @@ export default class Nav extends React.Component {
     console.log("archives  Class ",archivesClass);
     if(this.props.isDoctor === 1)
     {
+       console.log("In the render of Nav for Doctors ");
       return (
        <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
          <div class="container">
@@ -62,7 +72,7 @@ export default class Nav extends React.Component {
               </li>
              
                 <li class={featuredClass}>
-                <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Sign Out</IndexLink>
+                <IndexLink to="/" onClick={this.onUserSignOff}>Sign Out</IndexLink>
                </li>
              </ul>
            </div>
@@ -71,7 +81,7 @@ export default class Nav extends React.Component {
      );
     } else 
     {
-
+      console.log("In the render of Nav for Patients ");
      return (
        <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation">
          <div class="container">
@@ -109,7 +119,7 @@ export default class Nav extends React.Component {
         
               </li>
                 <li class={featuredClass}>
-                <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Sign Out</IndexLink>
+                <IndexLink to="/" onClick={this.onUserSignOff}>Sign Out</IndexLink>
               </li>
             </ul>
           </div>
@@ -127,9 +137,15 @@ var mapStateToProps = function (state) {
   // inside the App
   console.log("state information from mapStatetoProps in Nav ",state.isDoctor);
  
-  return { isDoctor:state.isDoctor};
+  return { isDoctor:state.isDoctor,
+           identity:state.identity };
 };
 
+var mapDispatchToProps = function (dispatch) {
+  return {
+    actions: bindActionCreators(identityAction, dispatch)
+  };
+}
 
 
-module.exports = connect(mapStateToProps, null)(Nav);
+module.exports = connect(mapStateToProps, mapDispatchToProps)(Nav);

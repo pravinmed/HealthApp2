@@ -11,7 +11,7 @@ export default class Settings extends React.Component {
 	constructor(props)
 	{
 		super(props);
-		console.log(" In the settings ");
+		console.log(" In the settings constructor");
 		this.state={ patientData:[]};
 	
     console.log(" Component DId mount  in Settings ");
@@ -22,6 +22,8 @@ export default class Settings extends React.Component {
 	});
 
 	this.callBackFunction= this.callBackFunction.bind(this);
+  //AWS.config.update({accessKeyId: 'AKIAJJLORRTL6KM4BYXA', secretAccessKey: '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'});
+  AWS.config.update({accessKeyId: 'AKIAIP3NUY6DQSXA3VSA', secretAccessKey: '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'});
   //var roleArn = 'arn:aws:iam::974961485142:role/service-role/myRole';
 	/*var adminCredentials = new AWS.WebIdentityCredentials({
     RoleArn: roleArn});*/
@@ -95,18 +97,18 @@ componentDidMount() {
   	console.log(" Process.env = ",process.env.foo);
   	return(
   		<div class="container ">
-			<div class="row">
-   			  <div class="col-sm-1" >
-   			        Filters
+		   	<div class="row">
+   			   <div class="col-sm-3" >
+   			     Filters
    			    </div>
-   			  <div class="col-sm-9 ">
-   			   	   <ul>
-   			   	     <li>   <HospLayout /> </li>
-  	  			 	    <li><ul class="list-group row menu"> {this.state.patientData.map(function(patient) {
+   			   <div class="col-sm-9 ">
+   			    <ul>
+   			      <li>   <HospLayout /> </li>
+  	  		 	    <li><ul class="list-group row menu"> {this.state.patientData.map(function(patient) {
   		       			  console.log("In the render of settings");
            	   			     return (<li id={patient.email} ><DoctorsList name={patient.name} email={patient.email} picture={patient.image_url} /> </li>) })} </ul> </li> </ul></div>
   	 	       	     <div class="col-sm-2">
-  	  			   <h4>Ads 1 Here for the future</h4>
+  	  			
   	  	  	  </div>
   	  		</div>
   	  	</div>

@@ -15,7 +15,8 @@ export default {
     patients: [],
     doctors:[],
     appointments:[appnt],
-    ajaxCallInProgress: 0,
-    isDoctor:0
+    ajaxCallInProgress:0,
+    isDoctor:0,
+    identity:{username:''}
   
 };
