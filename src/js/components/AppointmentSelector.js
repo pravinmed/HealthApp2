@@ -1,10 +1,15 @@
-import React from "react";
+import React,{PropTypes}  from "react";
 import SelectApptTime from "./SelectApptTime";
 import {Link} from 'react-router';
 import * as appointmentLoadAction from "../actions/appointmentLoadAction";
 import {browserHistory} from 'react-router';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import DatePicker from 'material-ui/DatePicker';
+import mui from 'material-ui';
+import ThemeManager from 'material-ui/styles/ThemeManager';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 
 
 
@@ -40,10 +45,19 @@ export default class AppointmentSelector extends React.Component {
   onDateClick()
   {
       console.log(" Date Selector clicked");
-      $('.datepicker').datepicker();
+   
+
       
+    
+     // $(this).datepicker('show');
   }
 
+  handleDateChange = (event, date) => {
+    console.log(" In the handle date change ");
+    console.log(date);
+    let newTimeSlot = ["9.00 ","9:15","9:30","9:45","10:00","10:15","10:30","10:45"];
+    this.setState({timeOfAppt:newTimeSlot});
+  };
  onBookClick()
  {
     console.log(" Booking the appointment");
@@ -59,11 +73,19 @@ export default class AppointmentSelector extends React.Component {
     console.log(eventID);
  }
 
+ static childContextTypes = {
+        muiTheme: PropTypes.object
+    }
+    getChildContext() {
+        return {
+            muiTheme: getMuiTheme()
+        }
+    }
   render() {
     const footerStyles = {
       marginTop: "30px",
     };
-
+   
     return (
       <div >
         
@@ -71,7 +93,8 @@ export default class AppointmentSelector extends React.Component {
             <ul> 
                <li>
                 <div class="left ">
-                    <p>Select Date: <input type="text" class="datepicker" onClick={this.onDateClick} /></p>
+                  <DatePicker hintText="Portrait Dialog"    onChange={this.handleDateChange}   autoOk={true} />
+                  {/*  <p>Select Date: <input type="text" class="datepicker" onClick={this.onDateClick} /></p>*/}
                 </div>
                </li>
                  <li>

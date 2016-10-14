@@ -16,7 +16,8 @@ import DoctorsAppointments from './pages/DoctorsAppointments';
 import SignUpPage from './pages/SignUpPage';
 
 
-
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 
 const app = document.getElementById('app');

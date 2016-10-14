@@ -98,10 +98,10 @@ componentDidMount() {
   	return(
   		<div class="container ">
 		   	<div class="row">
-   			   <div class="col-sm-3" >
+   			   <div class="col-sm-2" >
    			     Filters
    			    </div>
-   			   <div class="col-sm-9 ">
+   			   <div class="col-sm-8 ">
    			    <ul>
    			      <li>   <HospLayout /> </li>
   	  		 	    <li><ul class="list-group row menu"> {this.state.patientData.map(function(patient) {
