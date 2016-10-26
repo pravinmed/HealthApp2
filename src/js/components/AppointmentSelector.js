@@ -93,7 +93,7 @@ export default class AppointmentSelector extends React.Component {
             <ul> 
                <li>
                 <div class="left ">
-                  <DatePicker hintText="Portrait Dialog"    onChange={this.handleDateChange}   autoOk={true} />
+                  <DatePicker hintText="Select Date"    onChange={this.handleDateChange}   autoOk={true} />
                   {/*  <p>Select Date: <input type="text" class="datepicker" onClick={this.onDateClick} /></p>*/}
                 </div>
                </li>

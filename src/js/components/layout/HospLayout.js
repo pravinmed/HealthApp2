@@ -19,8 +19,10 @@ export default class HospLayout extends React.Component {
         <div class="container-fluid">
           <div class={"navbar-collapse  navbar-left"} id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
+               <li><h4>Select Filters   </h4></li>
                <li><HospitalList/></li>
                <li><DeptList/></li>
+               
             </ul>
           </div>
         </div>

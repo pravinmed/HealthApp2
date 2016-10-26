@@ -1,6 +1,10 @@
-import React from "react";
+import React ,{PropTypes} from "react";
 import MyAppointmentItem from "../components/MyAppointmentItem";
 import 'aws-sdk/dist/aws-sdk';
+import ThemeManager from 'material-ui/styles/ThemeManager';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import FlatButton from 'material-ui/FlatButton';
 
 export default class MyAppointments extends React.Component {
   constructor(props)
@@ -105,6 +109,16 @@ export default class MyAppointments extends React.Component {
     console.log(" On Delete called ");
  }
 
+ static childContextTypes = {
+        muiTheme: PropTypes.object
+    }
+    getChildContext() {
+        return {
+            muiTheme: getMuiTheme()
+        }
+    }
+
+
  componentMounted()
  {
      console.log(" Component Mounted in My appointment");
@@ -115,32 +129,32 @@ export default class MyAppointments extends React.Component {
     return (
     	<div>
         <h2>Upcomming Appointments </h2>
-    	      <table class="table">
-              <thead>
-                <tr>
-                  <th> Date </th>
-                  <th> Time of Appointment</th>
-                  <th> Name </th>
-                  <th> Address </th>
-                  <th>  </th>
-                </tr>
-              </thead>
-              <tbody>  
-                <tr>
+    	      <Table >
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderColumn> Date </TableHeaderColumn>
+                  <TableHeaderColumn> Time of Appointment</TableHeaderColumn>
+                  <TableHeaderColumn> Name </TableHeaderColumn>
+                  <TableHeaderColumn> Address </TableHeaderColumn>
+              
+                </TableRow>
+              </TableHeader>
+              <TableBody>  
+                <TableRow>
                 { this.state.appointmentList.map(function(appointment) {
                   console.log("In the render of My Appointment");
                   return ([
-                    <td>24 May 2016</td>,
-                    <td> 10:15 AM </td>,
-                     <td> {appointment.name}</td>,
-                     <td>{appointment.location}</td>,
-                    <td> <button type="button" class="btn btn-primary" onClick = {this.onCancel}>Cancel </button></td>
+                    <TableRowColumn>24 May 2016</TableRowColumn>,
+                    <TableRowColumn> 10:15 AM </TableRowColumn>,
+                     <TableRowColumn> {appointment.name}</TableRowColumn>,
+                     <TableRowColumn>{appointment.location}</TableRowColumn>
                     ]);    
                   },this)
                 }
-               </tr>  
-            </tbody>
-          </table>
+               </TableRow>  
+            </TableBody>
+          </Table>
+          <FlatButton label=" Cancel Appointment" primary={true} onClick = {this.onCancel} />
     	</div>
     );
   }

@@ -1,6 +1,10 @@
-import React from "react";
+import React,{PropTypes} from "react";
 import MyAppointmentItem from "../components/MyAppointmentItem";
 import 'aws-sdk/dist/aws-sdk';
+import Avatar from 'material-ui/Avatar';
+import ThemeManager from 'material-ui/styles/ThemeManager';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
 export default class DoctorsAppointments extends React.Component {
   constructor(props)
@@ -30,7 +34,7 @@ export default class DoctorsAppointments extends React.Component {
     this.state =
       {
         appointmentList:[],
-        daysOfWeek :["Time","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        daysOfWeek :["    Time","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
         apptSchedule:patientsApptList
       };
    
@@ -86,6 +90,15 @@ export default class DoctorsAppointments extends React.Component {
   console.log(event.target);
  }
 
+static childContextTypes = {
+        muiTheme: PropTypes.object
+    }
+    getChildContext() {
+        return {
+            muiTheme: getMuiTheme()
+        }
+    }
+
  componentMounted()
  {
      console.log(" Component Mounted in DoctorsAppointments ");
@@ -99,10 +112,10 @@ export default class DoctorsAppointments extends React.Component {
                     console.log("In the render of DoctorsAppointments ",item);
                     return (<td>Hello</td>) });
     return (
-    	<div>
+      <div>
         <h2> Appointments </h2> 
           Week: <input type="week" id="myWeek" onChange={this.onWeekClick}/>
-    	      <table class="table">
+            <table class="table">
               <thead>
                 <tr>
                   {this.state.daysOfWeek.map(function(day,indx){
@@ -125,7 +138,7 @@ export default class DoctorsAppointments extends React.Component {
                }) }
             </tbody>
           </table>
-    	</div>
+      </div>
     	
       
     );

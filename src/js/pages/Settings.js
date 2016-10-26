@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as drLoadAction from '../actions/drLoadAction';
 import 'aws-sdk/dist/aws-sdk';
+import * as Config from '../actions/ConfigFile_Do_Not_Check_IN';
+
 
 export default class Settings extends React.Component {
 	constructor(props)
@@ -16,19 +18,21 @@ export default class Settings extends React.Component {
 	
     console.log(" Component DId mount  in Settings ");
     var AWS = require("aws-sdk/dist/aws-sdk");
-	var AWS = window.AWS;
-	AWS.config.update({
-	  region: "us-west-2"
-	});
+	  var AWS = window.AWS;
+	  AWS.config.update({
+	    region: "us-west-2"
+	  });
 
 	this.callBackFunction= this.callBackFunction.bind(this);
-  //AWS.config.update({accessKeyId: 'AKIAJJLORRTL6KM4BYXA', secretAccessKey: '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'});
-  AWS.config.update({accessKeyId: 'AKIAIP3NUY6DQSXA3VSA', secretAccessKey: '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'});
+   var api = Config.APIKEY;
+   var secretKey = Config.SECRETKEY;
+   AWS.config.update({accessKeyId: api, secretAccessKey: secretKey});
   //var roleArn = 'arn:aws:iam::974961485142:role/service-role/myRole';
 	/*var adminCredentials = new AWS.WebIdentityCredentials({
     RoleArn: roleArn});*/
 	var docClient = new AWS.DynamoDB.DocumentClient();
-
+ 
+  console.log("api key from config ",api);
 	var table = "patienttable";
 
 	// Query 
@@ -37,12 +41,13 @@ export default class Settings extends React.Component {
 	     Limit:50
 	  
 	};
-
+  
   docClient.scan(params, this.callBackFunction);
-      
+     
     
 
 }
+
 
 componentDidMount() {
 	var URL = "https://i126g0qaqb.execute-api.us-west-2.amazonaws.com/prod/";

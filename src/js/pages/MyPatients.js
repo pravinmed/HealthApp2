@@ -1,4 +1,4 @@
-import React from "react";
+import React,{PropTypes} from "react";
 import HospLayout from "../components/Layout/HospLayout"
 import Nav from "../components/layout/Nav";
 import DoctorsList from "../components/DoctorsList";
@@ -8,7 +8,12 @@ import * as drLoadAction from '../actions/drLoadAction';
 import 'aws-sdk/dist/aws-sdk';
 import { Grid,Col,Row } from 'react-bootstrap';
 import PatientMetaData from '../components/PatientMetaData';
-import ListItem from '../components/ListItem';
+import {List, ListItem} from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
+import ThemeManager from 'material-ui/styles/ThemeManager';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import PatientActiveRecord from '../components/PatientActiveRecord';
+import * as Config from '../actions/ConfigFile_Do_Not_Check_IN';
 
 export default class MyPatients extends React.Component {
 	constructor(props)
@@ -22,18 +27,18 @@ export default class MyPatients extends React.Component {
     var AWS = require("aws-sdk/dist/aws-sdk");
 	var AWS = window.AWS;
 	AWS.config.update({
-	  region: "us-west-2",
-	  endpoint: "http://localhost:8000"
+	  region: "us-west-2"
 	});
 
 	this.callBackFunction= this.callBackFunction.bind(this);
 
   this.onClickEventForList = this.onClickEventForList.bind(this);
-
-	AWS.config.update({accessKeyId: 'AKIAJJLORRTL6KM4BYXA', secretAccessKey: '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'});
+   var api = Config.APIKEY;
+   var secretKey = Config.SECRETKEY;
+	 AWS.config.update({accessKeyId: api, secretAccessKey: secretKey});
 	var docClient = new AWS.DynamoDB.DocumentClient();
 
-	var table = "patient";
+	var table = "patienttable";
 
 	// Query 
 	var params = {
@@ -41,12 +46,21 @@ export default class MyPatients extends React.Component {
 	     Limit:50
 	  
 	};
+  docClient.scan(params, this.callBackFunction);
 
 }
 
+ static childContextTypes = {
+        muiTheme: PropTypes.object
+    }
+    getChildContext() {
+        return {
+            muiTheme: getMuiTheme()
+        }
+    }
 
 componentDidMount() {
-	var URL = "https://i126g0qaqb.execute-api.us-west-2.amazonaws.com/prod/";
+	/*var URL = "https://i126g0qaqb.execute-api.us-west-2.amazonaws.com/prod/";
 	var drList =[];
     $.ajax({
       url: URL,
@@ -66,7 +80,7 @@ componentDidMount() {
 
         console.error("URL :", status, err.toString());
       }.bind(this)
-    });
+    });*/
   }
 
   callBackFunction(err,data)
@@ -106,18 +120,19 @@ componentDidMount() {
   	return(
   	  <Grid>
          <Row className="show-grid">
-             <Col xs={12} md={8}> <h2> Select Date </h2></Col>
+             <Col xs={12} md={8}> <h4> Today's Patient Schedule </h4></Col>
          </Row>
          <Row className="show-grid">
              <Col sm={3} md={1} > <h1> Empty Space   </h1></Col>
               <Col sm={3} md={4} >
-                <ul> {this.state.patientData.map(function(patient,indx) {
+                    <List> {this.state.patientData.map(function(patient,indx) {
                       var is_selected = this.state.selectedItem == indx;
                       console.log("In the render of List in  My Patients ",is_selected);
                     return (
-                    <ListItem key={patient.email} patient_url={patient.image_url} name={patient.name} location="Bangalore" onClick={(event)=>this.onClickEventForList(patient)}  isSelected={is_selected}/>) },this) }  </ul> </Col>
-               <Col sm={3} md={6}><h1> Showing the Patient Record  here  </h1></Col>
-             <Col sm={3} md={1}><h3> Showing the Ads here    </h3> </Col>
+                    <ListItem key={patient.email} primaryText={patient.name} secondaryText=" From Bangalore " rightAvatar={<Avatar src={patient.image_url} />} onClick={(event)=>this.onClickEventForList(patient)}  isSelected={is_selected} />) },this)} </List>
+                   
+               </Col>
+               <Col sm={3} md={7}><PatientActiveRecord/></Col>
          </Row>
       </Grid>
 
