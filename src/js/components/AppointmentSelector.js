@@ -9,6 +9,7 @@ import DatePicker from 'material-ui/DatePicker';
 import mui from 'material-ui';
 import ThemeManager from 'material-ui/styles/ThemeManager';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import DropDownMenuItem from './DropDownMenuItem';
 
 
 
@@ -34,12 +35,13 @@ export default class AppointmentSelector extends React.Component {
     
     this.state = {
                   doctorAppointment:appnt,
-                  timeOfAppt:timeSlot};
+                  timeOfAppt:timeSlot,
+                    selectedIndx2:0};
     console.log(" in the Appointment Selector ");
     console.log(this.state.doctorAppointment);
     this.onDateClick  = this.onDateClick.bind(this);
     this.onBookClick = this.onBookClick.bind(this);
-    this.handleChangeSelection = this.handleChangeSelection.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   onDateClick()
@@ -66,12 +68,13 @@ export default class AppointmentSelector extends React.Component {
      console.log(browserHistory);
  }
 
- handleChangeSelection(event,eventID)
- {
-    console.log("Handle Change Selection in the TIme of the appointment");
-    console.log(event);
-    console.log(eventID);
- }
+ 
+
+  handleChange(evt,index,value)
+  {
+    console.log("selection Change here ",evt,index);
+    this.setState({selectedIndex2:index});
+  }
 
  static childContextTypes = {
         muiTheme: PropTypes.object
@@ -98,16 +101,10 @@ export default class AppointmentSelector extends React.Component {
                 </div>
                </li>
                  <li>
-                     <SelectApptTime   
-                        name="locationId"
-                        label=""
-                        value=""
-                        defaultOption="Select Time "
-                        options={this.state.timeOfAppt}
-                        onChange={this.handleChangeSelection} 
-                     />
+                   <DropDownMenuItem values={this.state.timeOfAppt} onChange={this.handleChange} defaultIndx={this.state.selectedIndex2}  />
                   </li>
                 <li> <Link to="/confirm" onClick={this.onBookClick}><h3>Book it</h3> </Link></li>
+            
             </ul>
           </div>
        </div>

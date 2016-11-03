@@ -33,7 +33,7 @@ export default class DoctorsInfo extends React.Component
    			    <div class="col-sm-3"  style={style} >
    			     	<img src={this.props.image_url} height="100" width="160" /> 
    			    </div>
- 				 <div class="col-sm-6"  style={style} > 
+ 				 <div class="col-sm-4"  style={style} > 
 					{this.props.name} 
 					<p>
 					{this.props.email}
@@ -42,7 +42,11 @@ export default class DoctorsInfo extends React.Component
 					<h5>Dental Solutions Centre for Implants & Laser Dentistry </h5>
 					<button type="button" class="btn btn-primary">Save </button>
 				</div>
+				<div class="col-sm-2" >
+				    <a>                                 	<button type="button" class="btn btn-primary"> Give Feedback </button>  </a>
+				</div>
    			   <div class="col-sm-3"  style={style} >
+   			  
    			    </div>
 
  			  </div>

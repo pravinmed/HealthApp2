@@ -145,7 +145,7 @@ handleChangeMultiple = (event, value) => {
                         <Link to="/mysaveddoctors" onClick={this.toggleCollapse.bind(this)}>My Doctors</Link>
                       </MenuItem>
                       <MenuItem value="2"  >
-                         <Link to="/appointments" onClick={this.toggleCollapse.bind(this)}>My Appointments</Link>
+                         <Link to="/appointments" >My Appointments</Link>
                       </MenuItem>
                     </IconMenu>
                  </li>
@@ -157,6 +157,7 @@ handleChangeMultiple = (event, value) => {
                      <form class="form-inline pull-xs-right">
                         {/* <input class="form-control" type="text" placeholder="Location"/>*/}
                         <input class="form-control" type="text" placeholder="Search Doctor"/>
+                        
                         {/*<button class="btn btn-success-outline" type="submit">Search </button>*/}
                      </form>
                    </li>

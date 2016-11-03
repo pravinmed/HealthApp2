@@ -4,6 +4,7 @@ import ButtonToolbar from "react-bootstrap/lib/ButtonToolbar";
 import DropdownButton from "react-bootstrap/lib/DropdownButton";
 import MenuItem from "react-bootstrap/lib/MenuItem";
 import SelectInput from "./SelectInput";
+import DropDownMenuItem from  "./DropDownMenuItem";
 
 export default class HospitalList extends React.Component {
  
@@ -16,11 +17,13 @@ export default class HospitalList extends React.Component {
                 data:{
                    hospital: ["A Hospital","B Hospital","C Hospital ","D Hospital"] 
 
-               } 
+               },
+               selectedIndx2:0
              };
   this.handleChangeSelection = this.handleChangeSelection.bind(this);
+  this.handleChange = this.handleChange.bind(this);
 
-   
+   console.log(" in the Hospital List  ");
  }
  getInitialState()
  {
@@ -34,6 +37,15 @@ export default class HospitalList extends React.Component {
     console.log("selection Change",evtKey);
   //  this.index=evt;
     this.setState({selectedIndex:evt.target.value});
+    
+    
+ }
+
+  handleChange(evt,index,value)
+ {
+    console.log("selection Change here ",evt,index);
+  //  this.index=evt;
+    this.setState({selectedIndex2:index});
     
     
  }
@@ -54,9 +66,7 @@ export default class HospitalList extends React.Component {
   render()
   {
     var titleVal = this.state.selectedIndex;
-    
-    
-    return(
+   return(
        <SelectInput
         name="hospital ID"
         label=""
@@ -66,5 +76,7 @@ export default class HospitalList extends React.Component {
         onChange={this.handleChangeSelection}
         />
     );
+    
+    
   }
 }

@@ -49,7 +49,7 @@ export default class DoctorsList extends React.Component
    			    	<img src={this.props.picture} height="100" width="160" />
    			    	
    			    </div>
- 				 <div class="col-sm-5"  style={style} > 
+ 				 <div class="col-sm-4"  style={style} > 
 					{this.props.name} 
 					<p>
 					{this.props.email}
@@ -60,7 +60,10 @@ export default class DoctorsList extends React.Component
       					<ContentSave />
     				</FloatingActionButton>
 				</div>
-   				<div class="col-sm-5 navbar-left" style={style} > <AppointmentSelector email={this.props.email} name={this.props.name} image_url={this.props.picture}/> </div>
+				<div class="col-sm-2" >
+				    <a>                                 	<button type="button" class="btn btn-primary"> Give Feedback </button>  </a>
+				</div>
+   				<div class="col-sm-4 navbar-left" style={style} > <AppointmentSelector email={this.props.email} name={this.props.name} image_url={this.props.picture}/> </div>
    			
  			  </div>
  			 </div>
