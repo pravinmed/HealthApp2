@@ -16,6 +16,7 @@ npm install --save-dev css-loader
 
 npm install babel-core
 
+npm install react-bootstrap
 
 Install latest version of react-tap-event-plugin
 
