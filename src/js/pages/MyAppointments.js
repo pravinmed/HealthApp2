@@ -1,7 +1,7 @@
 import React ,{PropTypes} from "react";
 import MyAppointmentItem from "../components/MyAppointmentItem";
 import 'aws-sdk/dist/aws-sdk';
-import ThemeManager from 'material-ui/styles/ThemeManager';
+import ThemeManager from 'material-ui/styles/themeManager';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import FlatButton from 'material-ui/FlatButton';

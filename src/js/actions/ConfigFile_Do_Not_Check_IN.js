@@ -1,2 +1,2 @@
-export const APIKEY = 'XX';
-export const SECRETKEY = 'XX';
+export const APIKEY = 'XXX';
+export const SECRETKEY = 'XXX';
