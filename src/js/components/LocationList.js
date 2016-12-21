@@ -24,7 +24,6 @@ export default class LocationList extends React.Component {
  }
  getInitialState()
  {
- 
      
  }
 
@@ -55,7 +54,7 @@ export default class LocationList extends React.Component {
   {
     var titleVal = this.state.selectedIndex;
     
-    
+     
       return(
       
        <SelectInput

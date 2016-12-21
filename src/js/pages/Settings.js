@@ -1,5 +1,5 @@
 import React from "react";
-import HospLayout from "../components/Layout/HospLayout"
+import HospLayout from "../components/layout/HospLayout"
 import Nav from "../components/layout/Nav";
 import DoctorsList from "../components/DoctorsList";
 import { connect } from 'react-redux';

@@ -1,5 +1,5 @@
 import React,{PropTypes} from "react";
-import HospLayout from "../components/Layout/HospLayout"
+import HospLayout from "../components/layout/HospLayout"
 import Nav from "../components/layout/Nav";
 import DoctorsList from "../components/DoctorsList";
 import { connect } from 'react-redux';
@@ -10,7 +10,7 @@ import { Grid,Col,Row } from 'react-bootstrap';
 import PatientMetaData from '../components/PatientMetaData';
 import {List, ListItem} from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import ThemeManager from 'material-ui/styles/ThemeManager';
+import ThemeManager from 'material-ui/styles/themeManager';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import PatientActiveRecord from '../components/PatientActiveRecord';
 import * as Config from '../actions/ConfigFile_Do_Not_Check_IN';

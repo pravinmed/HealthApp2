@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-import ThemeManager from 'material-ui/styles/ThemeManager';
+import ThemeManager from 'material-ui/styles/themeManager';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 

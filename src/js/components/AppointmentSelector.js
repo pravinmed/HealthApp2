@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import DatePicker from 'material-ui/DatePicker';
 import mui from 'material-ui';
-import ThemeManager from 'material-ui/styles/ThemeManager';
+import ThemeManager from 'material-ui/styles/themeManager';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import DropDownMenuItem from './DropDownMenuItem';
 

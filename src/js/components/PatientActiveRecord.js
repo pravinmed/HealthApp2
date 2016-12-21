@@ -5,7 +5,7 @@ import DropdownButton from "react-bootstrap/lib/DropdownButton";
 import MenuItem from "react-bootstrap/lib/MenuItem";
 import AppointmentSelector from "./AppointmentSelector";
 import Avatar from 'material-ui/Avatar';
-import ThemeManager from 'material-ui/styles/ThemeManager';
+import ThemeManager from 'material-ui/styles/themeManager';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';

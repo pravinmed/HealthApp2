@@ -10,7 +10,17 @@ export const APIKEY ='APIKEY';
 export const SECRETKEY ='SECRETKEY';
 
 npm install 
-npm install --save-dev style-loader and npm install --save-dev css-loader 
+npm install --save-dev style-loader 
+
+npm install --save-dev css-loader 
+
+npm install babel-core
+
+
+Install latest version of react-tap-event-plugin
+
+
+
 npm run dev
 
 -----------------------------
@@ -19,5 +29,5 @@ npm run dev
 
 To checkout  multiple files
 git commit -a
-
+git add "file-name	"
 git push

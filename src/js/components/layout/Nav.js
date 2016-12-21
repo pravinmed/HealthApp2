@@ -12,7 +12,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 import FileFileDownload from 'material-ui/svg-icons/file/file-download';
 import mui from 'material-ui';
-import ThemeManager from 'material-ui/styles/ThemeManager';
+import ThemeManager from 'material-ui/styles/themeManager';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 export default class Nav extends React.Component {

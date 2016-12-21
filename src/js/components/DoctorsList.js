@@ -4,7 +4,7 @@ import ButtonToolbar from "react-bootstrap/lib/ButtonToolbar";
 import DropdownButton from "react-bootstrap/lib/DropdownButton";
 import MenuItem from "react-bootstrap/lib/MenuItem";
 import AppointmentSelector from "./AppointmentSelector";
-import ThemeManager from 'material-ui/styles/ThemeManager';
+import ThemeManager from 'material-ui/styles/themeManager';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ContentSave from 'material-ui/svg-icons/content/save';
 import FloatingActionButton from 'material-ui/FlatButton';
