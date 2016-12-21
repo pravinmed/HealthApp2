@@ -1,2 +1,2 @@
-export const APIKEY = 'AKIAIMFVYLNOYMWWOWAQ';
-export const SECRETKEY = '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';
+export const APIKEY = 'XX';
+export const SECRETKEY = 'XX';
